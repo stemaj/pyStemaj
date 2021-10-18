@@ -1,4 +1,5 @@
 def extractInnerPart(content: bytes, beginString: bytes, endString: bytes) -> bytes:
+    """aus einem Bytehaufen den mittleren Teil extrahieren"""
     splitt = content.split(beginString)
     if len(splitt) > 1:
         splitt = splitt[1].split(endString)
@@ -7,11 +8,10 @@ def extractInnerPart(content: bytes, beginString: bytes, endString: bytes) -> by
     return b''
 
 def extractInnerPartAndSplit(content: bytes, beginString: bytes, endString: bytes, splitter: bytes):
-    splitt = content.split(beginString)
-    if len(splitt) > 1:
-        splitt = splitt[1].split(endString)
-        if len(splitt) > 1:
-            data = splitt[0].split(splitter)
-            data.pop()
-            return data
+    """aus einem Bytehaufen den mittleren Teil extrahieren und diesen mittels Trenner aufsplitten"""
+    inner = extractInnerPart(content, beginString, endString)
+    if len(inner) > 1:
+        data = [bytes for bytes in inner.split(splitter) if bytes != b'']
+        print(data)
+        return data
     return b''

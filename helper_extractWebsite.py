@@ -1,5 +1,5 @@
-from pyStemaj import byteStream
-from pyStemaj import dateiExport
+import byteStream
+import dateiExport
 
 def run(url: str, fileName: str):
     dateiExport.toFile(fileName, byteStream.fromUrl(url))

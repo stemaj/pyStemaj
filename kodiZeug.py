@@ -1,6 +1,6 @@
 from xbmc import Keyboard
-from xbmcgui import ListItem
-from xbmcplugin import addDirectoryItem, endOfDirectory, setResolvedUrl
+#from xbmcgui import ListItem
+#from xbmcplugin import addDirectoryItem, endOfDirectory, setResolvedUrl
 
 class Film():
     def __init__(self, film, link, plot, poster):
@@ -9,7 +9,9 @@ class Film():
         self.plot = plot
         self.poster = poster
 
+
 def tastaturEingabe() -> str:
+    """Eine Tastatureingabe in Kodi machen und diese als String zurückgeben"""
     keyb = Keyboard()
     keyb.doModal()
     if keyb.isConfirmed():
