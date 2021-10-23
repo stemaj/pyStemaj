@@ -18,8 +18,8 @@ def extractInnerPartAndSplit(content: bytes, beginString: bytes, endString: byte
         return data
     return b''
 
-def fromRegex(content: bytes, pattern: str) -> bytes:
-    comp = compile(pattern.encode()).findall(content)
+def fromRegex(content: bytes, pattern: bytes) -> bytes:
+    comp = compile(pattern).findall(content)
     if len(comp) > 0:
         return comp[0]
     return b''

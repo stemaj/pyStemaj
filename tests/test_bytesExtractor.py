@@ -18,7 +18,7 @@ class Test_bytesExtractor(unittest.TestCase):
 
     def test_regex(self):
 
-        a = bytesExtractor.fromRegex(fromFile('./export/test.bin'), r'CO(.+)BUS')
+        a = bytesExtractor.fromRegex(fromFile('./export/test.bin'), b'\x00\x01\x02CO(.+)BUS\x00\x01\x02')
         self.assertTrue(isinstance(a, bytes))
         self.assertEqual(a, b'TT')
 
