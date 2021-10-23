@@ -2,8 +2,8 @@ from re import compile
 
 def extractInnerPart(content: bytes, beginString: bytes, endString: bytes) -> bytes:
     """aus einem Bytehaufen den mittleren Teil extrahieren"""
-    if content is str:
-        content = content.encode()
+    if content is bytes:
+        content = content.decode()
     splitt = content.split(beginString)
     if len(splitt) > 1:
         splitt = splitt[1].split(endString)
