@@ -1,9 +1,7 @@
 from re import compile
 
-def extractInnerPart(content: bytes, beginString: bytes, endString: bytes) -> bytes:
+def extractInnerPart(content: bytes, beginString: str, endString: str) -> bytes:
     """aus einem Bytehaufen den mittleren Teil extrahieren"""
-    if content is bytes:
-        content = content.decode()
     splitt = content.split(beginString)
     if len(splitt) > 1:
         splitt = splitt[1].split(endString)
@@ -11,7 +9,7 @@ def extractInnerPart(content: bytes, beginString: bytes, endString: bytes) -> by
             return splitt[0]
     return b''
 
-def extractInnerPartAndSplit(content: bytes, beginString: bytes, endString: bytes, splitter: bytes):
+def extractInnerPartAndSplit(content: bytes, beginString: str, endString: str, splitter: bytes):
     """aus einem Bytehaufen den mittleren Teil extrahieren und diesen mittels Trenner aufsplitten"""
     inner = extractInnerPart(content, beginString, endString)
     if len(inner) > 1:
@@ -20,8 +18,9 @@ def extractInnerPartAndSplit(content: bytes, beginString: bytes, endString: byte
         return data
     return b''
 
-def fromRegex(content: bytes, pattern: bytes) -> bytes:
-    comp = compile(pattern).findall(content)
+def fromRegex(content: bytes, oneMatchPattern: bytes) -> bytes:
+    """gibt ein regex match als bytes zurück"""
+    comp = compile(oneMatchPattern).findall(content)
     if len(comp) > 0:
         return comp[0]
     return b''
