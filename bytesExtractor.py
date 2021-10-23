@@ -1,3 +1,5 @@
+from re import compile
+
 def extractInnerPart(content: bytes, beginString: bytes, endString: bytes) -> bytes:
     """aus einem Bytehaufen den mittleren Teil extrahieren"""
     splitt = content.split(beginString)
@@ -14,4 +16,10 @@ def extractInnerPartAndSplit(content: bytes, beginString: bytes, endString: byte
         data = [bytes for bytes in inner.split(splitter) if bytes != b'']
         print(data)
         return data
+    return b''
+
+def fromRegex(content: bytes, pattern: str) -> bytes:
+    comp = compile(pattern.encode()).findall(content)
+    if len(comp) > 0:
+        return comp[0]
     return b''

@@ -15,3 +15,10 @@ class Test_bytesExtractor(unittest.TestCase):
         a = bytesExtractor.extractInnerPartAndSplit(b'Bla,und,Blubs,Test', b'Bla', b'Test', b',')
         self.assertTrue(isinstance(a, list))
         self.assertEqual(len(a), 2)
+
+    def test_regex(self):
+
+        a = bytesExtractor.fromRegex(fromFile('./export/test.bin'), r'CO(.+)BUS')
+        self.assertTrue(isinstance(a, bytes))
+        self.assertEqual(a, b'TT')
+
