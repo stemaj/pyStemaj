@@ -1,4 +1,10 @@
+import os
 import unittest
+import sys
+
+root_folder = os.path.abspath(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(root_folder)
+
 import downloadFile
 from io import open
 from os import remove
@@ -6,7 +12,7 @@ from os.path import exists
 
 class Test_downloadFile(unittest.TestCase):
 
-    mp3File = './export/test.mp3'
+    mp3File = os.path.join(root_folder,'export/test.mp3')
 
     @classmethod
     def setUpClass(self):

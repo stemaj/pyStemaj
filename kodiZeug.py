@@ -10,7 +10,8 @@ class Film():
         self.poster = poster
 
 
-def tastaturEingabe() -> str:
+#def tastaturEingabe() -> str:
+def tastaturEingabe():
     """Eine Tastatureingabe in Kodi machen und diese als String zurückgeben"""
     keyb = Keyboard()
     keyb.doModal()
